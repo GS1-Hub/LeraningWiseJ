@@ -31,5 +31,12 @@ namespace LeraningWiseJ.Services
                 return new List<Finora>();
             }
         }
+        public async Task<Finora> CreateFinora(Finora finora)
+        {
+            var response = await _http.PostAsJsonAsync(BaseUrl + API.CreateFin, finora);
+            response.EnsureSuccessStatusCode();
+
+            return await response.Content.ReadFromJsonAsync<Finora>();
+        }
     }
 }

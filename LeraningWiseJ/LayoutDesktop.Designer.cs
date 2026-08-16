@@ -33,6 +33,14 @@
             this.gdvFin = new Wisej.Web.DataGridView();
             this.label2 = new Wisej.Web.Label();
             this.lblTotal = new Wisej.Web.Label();
+            this.btnCreateFin = new Wisej.Web.Button();
+            this.txtName = new Wisej.Web.TextBox();
+            this.finName = new Wisej.Web.Label();
+            this.finDescription = new Wisej.Web.Label();
+            this.txtDescription = new Wisej.Web.TextBox();
+            this.finAmount = new Wisej.Web.Label();
+            this.txtAmount = new Wisej.Web.TextBox();
+            this.btnSave = new Wisej.Web.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gdvFin)).BeginInit();
             this.SuspendLayout();
@@ -87,9 +95,89 @@
             this.lblTotal.TabIndex = 4;
             this.lblTotal.Text = "label3";
             // 
+            // btnCreateFin
+            // 
+            this.btnCreateFin.Location = new System.Drawing.Point(6, 316);
+            this.btnCreateFin.Name = "btnCreateFin";
+            this.btnCreateFin.Size = new System.Drawing.Size(100, 22);
+            this.btnCreateFin.TabIndex = 5;
+            this.btnCreateFin.Text = "Create Fin";
+            this.btnCreateFin.Click += new System.EventHandler(this.btnCreateFin_Click);
+            // 
+            // txtName
+            // 
+            this.txtName.Location = new System.Drawing.Point(107, 344);
+            this.txtName.Name = "txtName";
+            this.txtName.Size = new System.Drawing.Size(116, 30);
+            this.txtName.TabIndex = 6;
+            // 
+            // finName
+            // 
+            this.finName.AutoSize = true;
+            this.finName.Font = new System.Drawing.Font("@windowTitle", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
+            this.finName.ForeColor = System.Drawing.Color.FromName("@buttonText");
+            this.finName.Location = new System.Drawing.Point(6, 344);
+            this.finName.Name = "finName";
+            this.finName.Size = new System.Drawing.Size(53, 22);
+            this.finName.TabIndex = 7;
+            this.finName.Text = "Name:";
+            // 
+            // finDescription
+            // 
+            this.finDescription.AutoSize = true;
+            this.finDescription.Font = new System.Drawing.Font("@windowTitle", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
+            this.finDescription.ForeColor = System.Drawing.Color.FromName("@buttonText");
+            this.finDescription.Location = new System.Drawing.Point(6, 382);
+            this.finDescription.Name = "finDescription";
+            this.finDescription.Size = new System.Drawing.Size(95, 22);
+            this.finDescription.TabIndex = 9;
+            this.finDescription.Text = "Description:";
+            // 
+            // txtDescription
+            // 
+            this.txtDescription.Location = new System.Drawing.Point(107, 380);
+            this.txtDescription.Name = "txtDescription";
+            this.txtDescription.Size = new System.Drawing.Size(116, 30);
+            this.txtDescription.TabIndex = 8;
+            // 
+            // finAmount
+            // 
+            this.finAmount.AutoSize = true;
+            this.finAmount.Font = new System.Drawing.Font("@windowTitle", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
+            this.finAmount.ForeColor = System.Drawing.Color.FromName("@buttonText");
+            this.finAmount.Location = new System.Drawing.Point(6, 422);
+            this.finAmount.Name = "finAmount";
+            this.finAmount.Size = new System.Drawing.Size(70, 22);
+            this.finAmount.TabIndex = 11;
+            this.finAmount.Text = "Amount:";
+            // 
+            // txtAmount
+            // 
+            this.txtAmount.Location = new System.Drawing.Point(107, 420);
+            this.txtAmount.Name = "txtAmount";
+            this.txtAmount.Size = new System.Drawing.Size(116, 30);
+            this.txtAmount.TabIndex = 10;
+            // 
+            // btnSave
+            // 
+            this.btnSave.Location = new System.Drawing.Point(6, 468);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(217, 22);
+            this.btnSave.TabIndex = 12;
+            this.btnSave.Text = "Save";
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+            // 
             // LayoutDesktop
             // 
             this.AutoHideTaskbar = true;
+            this.Controls.Add(this.btnSave);
+            this.Controls.Add(this.finAmount);
+            this.Controls.Add(this.txtAmount);
+            this.Controls.Add(this.finDescription);
+            this.Controls.Add(this.txtDescription);
+            this.Controls.Add(this.finName);
+            this.Controls.Add(this.txtName);
+            this.Controls.Add(this.btnCreateFin);
             this.Controls.Add(this.lblTotal);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.panel1);
@@ -113,5 +201,13 @@
         private Wisej.Web.DataGridView gdvFin;
         private Wisej.Web.Label label2;
         private Wisej.Web.Label lblTotal;
+        private Wisej.Web.Button btnCreateFin;
+        private Wisej.Web.TextBox txtName;
+        private Wisej.Web.Label finName;
+        private Wisej.Web.Label finDescription;
+        private Wisej.Web.TextBox txtDescription;
+        private Wisej.Web.Label finAmount;
+        private Wisej.Web.TextBox txtAmount;
+        private Wisej.Web.Button btnSave;
     }
 }
