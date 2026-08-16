@@ -23,11 +23,12 @@ namespace LeraningWiseJ
         {
             var fins = _context.GetFinoras().Result;
 
+
             gdvFin.AutoGenerateColumns = true;
             gdvFin.DataSource = fins;
             gdvFin.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             gdvFin.RowHeadersVisible = false;
-            gdvFin.Columns["Id"].Visible = false;
+            gdvFin.Columns.Remove("ID");
 
             finName.Visible = false;
             finAmount.Visible = false;
