@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LeraningWiseJ.Services;
+using LeraningWiseJ.Services.Interface;
 using System.Collections.Specialized;
 using Wisej.Web;
 
@@ -13,7 +14,10 @@ namespace LeraningWiseJ
         static void Main(NameValueCollection args)
         {
             Application.Desktop = new LayoutDesktop();
-            
+        }
+        static Program()
+        {
+            Application.Services.AddService<IFinoraService, FinoraService>();
         }
     }
 }
