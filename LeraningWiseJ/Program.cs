@@ -13,9 +13,7 @@ namespace LeraningWiseJ
         static void Main(NameValueCollection args)
         {
             Application.Desktop = new LayoutDesktop();
-
-            Window1 window = new Window1();
-            window.Show();
+            
         }
     }
 }

@@ -8,6 +8,7 @@ namespace LeraningWiseJ
         public LayoutDesktop()
         {
             InitializeComponent();
+            this.navBar.Size = new System.Drawing.Size(1643, 50);
         }
     }
 }

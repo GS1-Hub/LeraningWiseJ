@@ -42,7 +42,9 @@
             // 
             // LayoutDesktop
             // 
+            this.AutoHideTaskbar = true;
             this.Controls.Add(this.navBar);
+            this.ForeColor = System.Drawing.Color.FromName("@desktop");
             this.Name = "LayoutDesktop";
             this.Size = new System.Drawing.Size(1643, 727);
             this.Wallpaper = "blank";
