@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
+using System.Threading.Tasks;
 using Wisej.Web;
 
 namespace LeraningWiseJ
@@ -19,26 +20,9 @@ namespace LeraningWiseJ
             _context = new FinoraService(new HttpClient());
         }
 
-        private void LayoutDesktop_Load(object sender, EventArgs e)
+        private async void LayoutDesktop_Load(object sender, EventArgs e)
         {
-            var fins = _context.GetFinoras().Result;
-
-
-            gdvFin.AutoGenerateColumns = true;
-            gdvFin.DataSource = fins;
-            gdvFin.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            gdvFin.RowHeadersVisible = false;
-            gdvFin.Columns.Remove("ID");
-
-            finName.Visible = false;
-            finAmount.Visible = false;
-            finDescription.Visible = false;
-            txtName.Visible = false;
-            txtAmount.Visible = false;
-            txtDescription.Visible = false;
-            btnSave.Visible = false;
-
-            AtualizarTotal(fins);
+            await Config();
         }
 
         public void AtualizarTotal(List<Finora> fins)
@@ -106,6 +90,54 @@ namespace LeraningWiseJ
 
             var fins = _context.GetFinoras().Result;
             gdvFin.DataSource = fins;
+            AtualizarTotal(fins);
+        }
+
+        private async Task Config()
+        {
+            var fins = await _context.GetFinoras();
+            gdvFin.AutoGenerateColumns = true;
+            gdvFin.DataSource = fins;
+            gdvFin.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            gdvFin.RowHeadersVisible = false;
+            gdvFin.Columns.Remove("ID");
+
+            var finPaids = await _context.GetFinoraPaids();
+
+            // Só os pagos
+            var finPaidsView = finPaids
+                .Where(fp => fp.IsPaid)
+                .Select(fp => new
+                {
+                    Name = fp.Fin?.Name,
+                    Paid = fp.IsPaid
+                }).ToList();
+
+            gdvFinPaid.AutoGenerateColumns = true;
+            gdvFinPaid.DataSource = finPaidsView;
+            gdvFinPaid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+
+            // Só os não pagos
+            var finNotPaidView = finPaids
+                .Where(fp => !fp.IsPaid)
+                .Select(fp => new
+                {
+                    Name = fp.Fin?.Name,
+                    Amount = fp.Fin.Amount,
+                    Paid = fp.IsPaid
+                }).ToList();
+
+            dgvNotPaid.AutoGenerateColumns = true;
+            dgvNotPaid.DataSource = finNotPaidView;
+            dgvNotPaid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+
+            finName.Visible = false;
+            finAmount.Visible = false;
+            finDescription.Visible = false;
+            txtName.Visible = false;
+            txtAmount.Visible = false;
+            txtDescription.Visible = false;
+            btnSave.Visible = false;
             AtualizarTotal(fins);
         }
     }

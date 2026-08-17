@@ -8,5 +8,7 @@ namespace LeraningWiseJ.Services.Interface
     {
         Task<List<Finora>> GetFinoras();
         Task<Finora> CreateFinora(Finora finora);
+
+        Task<List<FinoraPaid>> GetFinoraPaids();
     }
 }

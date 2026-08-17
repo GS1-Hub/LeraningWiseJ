@@ -38,5 +38,19 @@ namespace LeraningWiseJ.Services
 
             return await response.Content.ReadFromJsonAsync<Finora>();
         }
+        public async Task<List<FinoraPaid>> GetFinoraPaids()
+        {
+            try
+            {
+            var result = await _http.GetFromJsonAsync<List<FinoraPaid>>(BaseUrl + API.GetPaidFin);
+            return result ?? new List<FinoraPaid>();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Erro ao buscar dados: {ex.Message}");
+                return new List<FinoraPaid>();
+            }
+            
+        }
     }
 }
